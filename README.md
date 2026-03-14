@@ -4,8 +4,6 @@ A research project analyzing real-world SSH attack patterns using a [Cowrie](htt
 
 Over the observation period of a month, the honeypot recorded sustained brute force attempts and post-authentication malware deployment from multiple source IPs.
 
----
-
 ## Setup & Infrastructure
 
 | Property | Detail |
@@ -17,8 +15,6 @@ Over the observation period of a month, the honeypot recorded sustained brute fo
 | **Protocol** | SSH / SFTP |
 
 Cowrie logs were shipped via Filebeat → Logstash → OpenSearch, with visualization through OpenSearch Dashboards.
-
----
 
 ## Findings
 
@@ -59,8 +55,6 @@ Two distinct post-authentication campaigns were identified: a widespread scannin
 - Deployed cryptominer binaries for 4 CPU architectures: `arm7`, `arm8`, `i686`, `x86_64`
 - The uploaded binaries were confirmed as Redtail cryptomining malware via SHA256 hash verification on VirusTotal, targeting multiple architectures (arm7, arm8, i686, x86_64) with the intent of mining Monero (XMR).
 - Accompanied by `clean.sh` (log removal) and `setup.sh` (persistence installation)
-
----
 
 ## Repository Structure
 
