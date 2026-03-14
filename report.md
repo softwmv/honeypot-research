@@ -7,7 +7,6 @@
 5. [Attacker Profile](#attacker-profile)
 6. [Indicators of Compromise](#indicators-of-compromise)
 
----
 ## Setup & Environment
 
 ### Infrastructure
@@ -23,8 +22,6 @@
 ### Log Pipeline
 
 Cowrie logs were shipped in real time via Filebeat and Logstash into OpenSearch, with OpenSearch Dashboards used for visualization and analysis.
-
----
 
 ## Attack Overview & Timeline
 
@@ -53,8 +50,6 @@ On 2026-02-16, a single source IP from Indonesia generated a massive spike in SS
 - Sudden start and stop suggests manual execution or a cron-scheduled job
 - Operating hours (8:00-22:00) align with typical business hours, which could suggest the attacker is operating within a specific timezone
 - Source IP was traced to a residential ISP, which is consistent with a compromised home machine or residential proxy
-
----
 
 ## Credential Analysis
 
@@ -92,8 +87,6 @@ xinxinxin
 - While these passwords are simple, they remain common among non-technical users.
 - A sample 10,000 line wordlist of the observed passwords is available under `raw/wordlist.txt`.
 
----
-
 ## Post-Authentication Behaviour & Malware Analysis
 
 Upon gaining access, attackers uploaded malicious payloads via SFTP. Two distinct threat clusters were identified.
@@ -114,8 +107,6 @@ Several unique variants were observed (differing SHA256 hashes), suggesting the 
 | `d44144ff...` | 61.240.17.66 | 2026-02-17 18:10 UTC |
 | `b5afdf7d...` | 118.121.203.170 | 2026-02-15 15:51 UTC |
 | `6b5afe50...` | 223.108.185.218 | 2026-03-12 00:42 UTC |
-
----
 
 ### Cluster B — Redtail Cryptominer Campaign (IP: `213.209.159.158`)
 
@@ -143,8 +134,6 @@ This is the most significant threat actor observed. A single IP (`213.209.159.15
 - **`setup.sh`** — installs the appropriate binary, establishes cron persistence, and may disable security tooling
 - **Identical SHA256 hashes across sessions** — the same payload bundle was deployed on Feb 14, 16, and 17, indicating an **automated, scripted campaign** hitting targets in bulk
 - The repeat visits from the same IP suggest either the honeypot was flagged as a "confirmed accessible" host in their infrastructure, or the attacker runs periodic re-infection sweeps
-
----
 
 ## Attacker Profile
 
@@ -180,8 +169,6 @@ Two distinct attacker profiles were identified across the observation period.
 ### Attribution Confidence
 
 > **Low.** No definitive attribution is possible from honeypot data alone. Source IPs may represent compromised intermediary hosts rather than the actual threat actors' infrastructure.
-
----
 
 ## Indicators of Compromise
 
@@ -222,8 +209,6 @@ Two distinct attacker profiles were identified across the observation period.
 | `sshd` (variant 7) | `b5afdf7d2bd35e0b61c315ebb78164a785326cc12fd8e1c0b601ab9525101094` |
 | `sshd` (variant 8) | `6b5afe506c5b4db4094797166a92021271a623af48f1d476185858264909d8c7` |
 
----
-
 ## Appendix
 
 ### Tools & Environment
@@ -237,7 +222,5 @@ Two distinct attacker profiles were identified across the observation period.
 - Enforce SSH key-based authentication only
 - Rate-limit or block IPs exceeding a threshold of failed attempts (e.g. via `fail2ban`)
 - Enforce a strong password policy that ensures cryptographically secure password.
-
----
 
 *All data collected in a controlled honeypot environment for research and threat intelligence purposes.*
