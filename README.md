@@ -72,6 +72,7 @@ Two distinct post-authentication campaigns were identified: a widespread scannin
     ├── common-passwords.png
     ├── top-orgs.png
     ├── region-map.png
+    ├── sessions.png
     └── sessions-over-time.png
 └── raw/
     ├── cowrie-file-hash.txt
